@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+
+
+	<bean id="loginuserWebAction" class="com.biyeseng.action.LoginuserWebAction"
+		scope="prototype">
+
+		<property name="adminService">
+			<ref bean="adminService" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		 
+
+	</bean>
+
+
+
+	<bean id="adminWebAction" class="com.biyeseng.action.AdminWebAction" scope="prototype">
+		<property name="adminService">
+			<ref bean="adminService" />
+		</property>
+	</bean>
+
+	<bean id="userWebAction" class="com.biyeseng.action.UserWebAction" scope="prototype">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+
+	</bean>
+	
+	<bean id="zhangWebAction" class="com.biyeseng.action.ZhangWebAction" scope="prototype">
+	<property name="zhangService">
+		<ref bean="zhangService" />
+	</property>
+	<property name="tongService">
+		<ref bean="tongService" />
+	</property>
+</bean>
+
+ 
+
+
+</beans>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClass}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
+		<property name="acquireIncrement"
+			value="${jdbc.acquireIncrement}" />
+		<property name="maxStatements" value="${jdbc.maxStatements}" />
+		<property name="initialPoolSize"
+			value="${jdbc.initialPoolSize}" />
+		<property name="idleConnectionTestPeriod"
+			value="${jdbc.idleConnectionTestPeriod}" />
+		<property name="acquireRetryAttempts"
+			value="${jdbc.acquireRetryAttempts}" />
+		<property name="breakAfterAcquireFailure"
+			value="${jdbc.breakAfterAcquireFailure}" />
+		<property name="testConnectionOnCheckout"
+			value="${jdbc.testConnectionOnCheckout}" />
+	</bean>
+
+	<!--Hibernate SessionFatory-->
+      <bean id="sessionFactory"
+		class="com.biyeseng.common.AnnotationSessionFactoryBeanEx">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="annotatedClassesLocations">
+			<list>
+				<value>classpath*:com/**/vo/*.class</value>
+			</list>
+		</property>
+		<!--用正则表达式匹配不被scan的类-->
+		<property name="excludedClassesRegexPatterns">
+			<list>
+				<value><![CDATA[^[\w\.]+Test[\w]+$]]></value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">
+					${hibernate.cache.use_query_cache}
+				</prop>
+				<prop key="hibernate.cache.provider_class">
+					${hibernate.cache.provider_class}
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					${hibernate.cache.use_second_level_cache}
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />	
+		</property>
+	</bean>
+</beans>

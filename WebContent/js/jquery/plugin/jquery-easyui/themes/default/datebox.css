@@ -1,0 +1,26 @@
+.datebox-calendar{
+	position:absolute;
+	border:1px solid #A4BED4;
+	width:180px;
+}
+.datebox-calendar-inner{
+	height:180px;
+}
+.datebox-button{
+	height:18px;
+	padding:2px 5px;
+	font-size:12px;
+	background-color:#fafafa;
+}
+.datebox-current,.datebox-close{
+	float:left;
+	color:#888;
+	text-decoration:none;
+	font-weight:bold;
+}
+.datebox-close{
+	float:right;
+}
+.datebox-button-hover{
+	color:#A4BED4;
+}

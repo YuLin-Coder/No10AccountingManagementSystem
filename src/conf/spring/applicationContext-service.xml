@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+
+
+	<bean name="adminService" class="com.biyeseng.service.AdminServiceImpl">
+		<property name="adminDAO">
+			<ref bean="adminDAO" />
+		</property>
+	</bean>
+
+	<bean name="userService" class="com.biyeseng.service.UserServiceImpl">
+		<property name="userDAO">
+			<ref bean="userDAO" />
+		</property>
+	</bean>
+
+<bean name="zhangService" class="com.biyeseng.service.ZhangServiceImpl">
+	<property name="zhangDAO">
+		<ref bean="zhangDAO" />
+	</property>
+</bean>
+<bean name="tongService" class="com.biyeseng.service.TongServiceImpl">
+	<property name="tongDAO">
+		<ref bean="tongDAO" />
+	</property>
+</bean>
+
+	 
+</beans>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="com" extends="struts-default">
+		<global-results>
+			<result name="succeed">/common/succeed.jsp</result>
+			<result name="successAdd">/common/add_success.jsp</result>
+			<result name="successDel">/common/del_success.jsp</result>
+			<result name="successUpdate">
+				/common/update_success.jsp
+			</result>
+		</global-results>
+
+
+
+		<action name="loginuser" class="loginuserWebAction">
+
+			<result name="fail">/login.jsp</result>
+			<result name="adminfail">/adminlogin.jsp</result>
+			<result name="register">/register.jsp</result>
+
+
+			<result name="success">/index.jsp</result>
+
+		</action>
+
+
+
+		<action name="admin" class="adminWebAction">
+			<result name="list">/admin/admin_list.jsp</result>
+			<result name="add">/admin/admin_add.jsp</result>
+			<result name="edit">/admin/admin_edit.jsp</result>
+			<result name="view">/admin/admin_view.jsp</result>
+			<result name="my">/admin/my_edit.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+
+		<action name="user" class="userWebAction">
+			<result name="list">/user/user_list.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="add">/user/user_add.jsp</result>
+			<result name="edit">/user/user_edit.jsp</result>
+			<result name="view">/user/user_view.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="editsc">/user/user_edit.jsp</result>
+		</action>
+		<action name="zhang" class="zhangWebAction">
+			<result name="list">/zhang/zhang_list.jsp</result>
+			<result name="add">/zhang/zhang_add.jsp</result>
+			<result name="edit">/zhang/zhang_edit.jsp</result>
+			<result name="view">/zhang/zhang_view.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="qylist">/zhang/zhang_ylist.jsp</result>
+			<result name="qnlist">/zhang/zhang_nlist.jsp</result>
+		</action>
+
+
+
+
+
+
+
+	</package>
+</struts>
